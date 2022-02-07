@@ -1,0 +1,53 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main()
+{
+    float a,b,c,eq1,yInt,sum,multiple;
+    cout<<"Input the value of a: ";
+    cin>>a;
+    cout<<"Input the value of b: ";
+    cin>>b;
+    cout<<"Input the value of c: ";
+    cin>>c;
+
+    if(a!=0)
+    {
+        cout<<"\nIt is a quadratic equation";
+        eq1=b*b-4*a*c;
+
+        if(eq1<0)
+            cout<<"\nThere is no root";
+        else if(eq1>0)
+            cout<<"\nThere are 2 roots";
+        else
+            cout<<"\nThere is 1 root";
+
+        if(a<0)
+            cout<<"\nThe curve is opening up";
+        else
+            cout<<"\nThe curve is opening down";
+
+        for(int x=0;;)
+        {
+            yInt=a*x*x+b*x+c;
+            cout<<"\nY Intercept is="<<yInt;
+            break;
+        }
+
+        if(eq1>0)
+        {
+            sum=(-b/a);
+            multiple=c/a;
+            cout<<"\nSummation of the roots="<<sum;
+            cout<<"\nMultiplication of the roots="<<multiple;
+        }
+        else
+            cout<<"\nSummation and Multiplication of the roots are not applicable here";
+    }
+    else
+        cout<<"\nIt is a linear equation";
+
+    return 0;
+}

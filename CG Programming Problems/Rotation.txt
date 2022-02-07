@@ -1,0 +1,53 @@
+#include <iostream>
+#include <graphics.h>
+#include <math.h>
+
+using namespace std;
+
+void rotateTriangle(double x[],double y[],int &f,int gd,int gm);
+
+int main()
+{
+    double x[3],y[3];
+    int gd=DETECT,gm;
+    POINT cursorPos;
+
+    for(int i=0;i<3;i++)
+    {
+        cout<<"\nEnter the x"<<i+1<<"- ";
+        cin>>x[i];
+        cout<<"Enter the y"<<i+1<<"- ";
+        cin>>y[i];
+    }
+    initgraph(&gd, &gm, (char*)"");
+    for(int i=0;i<1000;i++)
+    {
+        cleardevice();
+        GetCursorPos(&cursorPos);
+        rotateTriangle(x,y,i,gd,gm);
+        swapbuffers();
+        delay(100);
+    }
+
+    getch();
+    closegraph();
+    return 0;
+}
+
+void rotateTriangle(double x[],double y[],int &f,int gd,int gm)
+{
+    double a[3],b[3];
+
+    for(int i=0;i<3;i++)
+    {
+        if(x[i]<=0 || x[i]>650 || y[i]<=0 || y[i]>700)
+            f=0;
+
+        a[i]=(x[i]*cos(f*3.14159/180)-y[i]*sin(f*3.14159/180));
+        b[i]=(x[i]*sin(f*3.14159/180)+y[i]*cos(f*3.14159/180));
+    }
+
+    line(a[0],b[0],a[1],b[1]);
+    line(a[1],b[1],a[2],b[2]);
+    line(a[2],b[2],a[0],b[0]);
+}

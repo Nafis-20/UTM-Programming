@@ -1,0 +1,65 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main()
+{
+    float a,b,c,eq1,yInt,sum,multiple,x1,x2;
+
+    //A quadratic equation is in the form of f(x)=ax^2+bx+c.
+
+    cout<<"Input the value of a: ";
+    cin>>a;                         //a=coefficient of x^2
+    cout<<"Input the value of b: ";
+    cin>>b;                         //b=coefficient of x^1
+    cout<<"Input the value of c: ";
+    cin>>c;                         //c=coefficient of x^0
+
+    if(a!=0)    //When the coefficient of x^2 is 0, f(x) becomes bx+c, the highest power of x is 1. f(x) turns into a linear equation.
+    {
+        cout<<"\nIt is a quadratic equation";
+
+        eq1=b*b-4*a*c;             //eq1=discriminant of the quadratic equation
+
+        if(eq1==0){
+			x1 = (-b + sqrt(eq1)) / (2*a);
+        	cout<<"\nThere is 1 roots.\n";
+        	cout << "x1 = " << x1 << endl;
+		}
+        else if(eq1>0){
+			x1 = (-b + sqrt(eq1)) / (2*a);
+        	x2 = (-b - sqrt(eq1)) / (2*a);
+        	cout<<"\nThere are 2 roots.\n";
+        	cout << "x1 = " << x1 << endl;
+        	cout << "x2 = " << x2 << endl;
+		}
+        else
+            cout<<"\nThere is no root.";
+
+        if(a>0)          //The curve opens up when a is positive, opens down when a is negative.
+            cout<<"\nThe curve is opening up";
+        else
+            cout<<"\nThe curve is opening down";
+
+        for(int x=0;;)   //The graph of f(x) crosses the y-axis when x=0.
+        {
+            yInt=a*x*x+b*x+c;
+            cout<<"\nY Intercept is="<<yInt;
+            break;
+        }
+
+        if(eq1>0)        //Summation and multiplication of roots are only applicable when there are two roots.
+        {
+            sum=(-b/a);
+            multiple=c/a;
+            cout<<"\nSummation of the roots="<<sum;
+            cout<<"\nMultiplication of the roots="<<multiple<<endl;
+        }
+        else
+            cout<<"\nSummation and Multiplication of the roots are not applicable here\n";
+    }
+    else
+        cout<<"\nIt is a linear equation\n";
+
+    return 0;
+}
